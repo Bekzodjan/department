@@ -31,8 +31,6 @@ public class User implements UserDetails {
     private String username;
     @Column(nullable = false)
     private String password;
-    private LocalDateTime arrivedDate;
-    private LocalDateTime goneDate;
     private Boolean enabled;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
