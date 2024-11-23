@@ -1,4 +1,4 @@
-package org.example.back.entity;
+package org.example.back.entity.role;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

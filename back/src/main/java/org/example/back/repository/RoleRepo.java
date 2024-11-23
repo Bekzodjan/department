@@ -1,6 +1,6 @@
 package org.example.back.repository;
 
-import org.example.back.entity.Role;
+import org.example.back.entity.role.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -34,7 +34,7 @@ public class SecurityConfig{
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth ->
                         auth
-                                .requestMatchers(HttpMethod.POST, "auth/register", "auth/login").permitAll()
+                                .requestMatchers(HttpMethod.POST, "api/auth/register", "api/auth/login").permitAll()
                                 .anyRequest().authenticated()).addFilterBefore(customFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }

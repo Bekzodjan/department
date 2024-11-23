@@ -3,7 +3,7 @@ package org.example.back.service.auth;
 import lombok.RequiredArgsConstructor;
 import org.example.back.dto.auth.LoginDto;
 import org.example.back.dto.auth.RegisterDto;
-import org.example.back.entity.User;
+import org.example.back.entity.user.User;
 import org.example.back.repository.RoleRepo;
 import org.example.back.repository.UserRepo;
 import org.example.back.service.jwt.JwtService;
@@ -24,7 +24,7 @@ public class AuthServiceImpl implements AuthService {
     private final RoleRepo roleRepo;
     private final UserRepo userRepo;
     private final JwtService jwtService;
-    final private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
 
     @Override
     public HttpEntity<?> registerUser(RegisterDto registerDto) {
