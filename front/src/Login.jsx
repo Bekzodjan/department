@@ -1,11 +1,11 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { Container, Form, Button, Card } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    email: "",
+    username: "",
     password: "",
   });
 
@@ -53,18 +53,16 @@ const Login = () => {
           )}
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
               <Form.Control
-                type="email"
+                type="text"
                 placeholder="Enter email"
-                name="email"
-                value={formData.email}
+                name="username"
+                value={formData.username}
                 onChange={handleChange}
               />
             </Form.Group>
 
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
+            <Form.Group controlId="formBasicPassword" className="mt-3">
               <Form.Control
                 type="password"
                 placeholder="Password"

@@ -1,12 +1,12 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { Container, Form, Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    firstName:"",
-    lastName:"",
+    firstName: "",
+    lastName: "",
     username: "",
     password: "",
   });
@@ -51,30 +51,29 @@ const Register = () => {
             <p className="text-danger text-center">{errorMessage}</p>
           )}
           <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formBasicUser">
-              <Form.Label>User FirstName</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter first name"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleChange}
-              />
-            </Form.Group>
+            <div className="d-flex gap-4">
+              <Form.Group controlId="formBasicUser">
+                <Form.Control
+                  type="text"
+                  placeholder="Enter first name"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                />
+              </Form.Group>
 
-            <Form.Group controlId="formBasicUser">
-              <Form.Label>User LastName</Form.Label>
-              <Form.Control
+              <Form.Group controlId="formBasicUser">
+                <Form.Control
                   type="text"
                   placeholder="Enter last name"
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleChange}
-              />
-            </Form.Group>
+                />
+              </Form.Group>
+            </div>
 
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>Username address</Form.Label>
+            <Form.Group controlId="formBasicEmail" className="my-3">
               <Form.Control
                 type="text"
                 placeholder="Enter username"
@@ -85,7 +84,6 @@ const Register = () => {
             </Form.Group>
 
             <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Password"
@@ -94,13 +92,20 @@ const Register = () => {
                 onChange={handleChange}
               />
             </Form.Group>
+            <Form.Group controlId="formBasicPassword" className="mt-3">
+              <Form.Select aria-label="Default select example">
+                <option disabled>Select Role</option>
+                <option value="ROLE_MANAGER">Manager</option>
+                <option value="ROLE_EMPLOYE">Employe</option>
+              </Form.Select>
+            </Form.Group>
 
             <Button variant="primary" type="submit" className="w-100 mt-3">
               Register
             </Button>
           </Form>
           <div className="text-center mt-3">
-            <Link to="/src/Login">Already have an account? Login</Link>
+            <Link to="/login">Already have an account? Login</Link>
           </div>
         </Card.Body>
       </Card>
