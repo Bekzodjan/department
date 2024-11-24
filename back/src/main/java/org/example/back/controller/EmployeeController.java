@@ -33,4 +33,10 @@ public class EmployeeController {
     public HttpEntity<?> addEmployee(@RequestBody EmployeeDto employee) {
         return userServiceImpl.addEmployee(employee);
     }
+
+    @GetMapping("/{dId}")
+    @PreAuthorize("hasAnyRole('ROLE_MANAGER')")
+    public HttpEntity<?> getEmployeeByDepartmentId(@PathVariable Long dId) {
+        return userServiceImpl.getEmployeeByDepartmentId(dId);
+    }
 }
