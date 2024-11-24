@@ -35,7 +35,7 @@ const Login = () => {
         localStorage.setItem("authToken", token);
         console.log("Token saved:", token);
         alert("Login successful!");
-        navigate("/dashboard");
+        navigate("/home");
       } else {
         throw new Error("No token received.");
       }
