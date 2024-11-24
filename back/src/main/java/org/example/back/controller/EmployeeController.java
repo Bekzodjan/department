@@ -1,5 +1,7 @@
 package org.example.back.controller;
 
+import org.example.back.dto.employee.EmployeeDto;
+import org.example.back.entity.employee.Employee;
 import org.example.back.service.employee.EmployeeServiceImpl;
 import org.springframework.http.HttpEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -24,5 +26,11 @@ public class EmployeeController {
     @PreAuthorize("hasAnyRole('ROLE_MANAGER')")
     public HttpEntity<?> updateGoneDate(@PathVariable Long id) {
         return userServiceImpl.putGoneDate(id);
+    }
+
+    @PostMapping
+    @PreAuthorize("hasAnyRole('ROLE_MANAGER')")
+    public HttpEntity<?> addEmployee(@RequestBody EmployeeDto employee) {
+        return userServiceImpl.addEmployee(employee);
     }
 }
