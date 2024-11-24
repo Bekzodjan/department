@@ -24,11 +24,13 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8080/auth/login",
+        "http://localhost:8080/api/auth/login",
         formData
       );
 
-      const token = response.data.token;
+      const token = response.data;
+      console.log(response.data);
+
       if (token) {
         localStorage.setItem("authToken", token);
         console.log("Token saved:", token);

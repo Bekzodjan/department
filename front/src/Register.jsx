@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Container, Form, Button, Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Register = () => {
@@ -9,9 +9,11 @@ const Register = () => {
     lastName: "",
     username: "",
     password: "",
+    roleType: "",
   });
 
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,11 +29,12 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8080/auth/register",
+        "http://localhost:8080/api/auth/register",
         formData
       );
       console.log("User registered:", response.data);
       setErrorMessage("");
+      navigate("/login");
       alert("Registration successful!");
     } catch (error) {
       console.error(
@@ -92,11 +95,16 @@ const Register = () => {
                 onChange={handleChange}
               />
             </Form.Group>
+
             <Form.Group controlId="formBasicPassword" className="mt-3">
-              <Form.Select aria-label="Default select example">
-                <option disabled>Select Role</option>
+              <Form.Select
+                aria-label="Default select example"
+                name="roleType"
+                value={formData.roleType}
+                onChange={handleChange}
+              >
                 <option value="ROLE_MANAGER">Manager</option>
-                <option value="ROLE_EMPLOYE">Employe</option>
+                <option value="ROLE_EMPLOYEE">Employee</option>
               </Form.Select>
             </Form.Group>
 
