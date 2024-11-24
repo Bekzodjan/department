@@ -28,7 +28,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8080/auth/register",
+        "http://localhost:8080/api/auth/register",
         formData
       );
       console.log("User registered:", response.data);
