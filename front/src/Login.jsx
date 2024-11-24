@@ -83,6 +83,7 @@ const Login = () => {
           </div>
         </Card.Body>
       </Card>
+      <input type="time" />
     </Container>
   );
 };
