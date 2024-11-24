@@ -28,7 +28,9 @@ const Login = () => {
         formData
       );
 
-      const token = response.data.token;
+      const token = response.data;
+      console.log(response.data);
+
       if (token) {
         localStorage.setItem("authToken", token);
         console.log("Token saved:", token);
