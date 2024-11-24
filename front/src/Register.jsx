@@ -9,6 +9,7 @@ const Register = () => {
     lastName: "",
     username: "",
     password: "",
+    roleType: "",
   });
 
   const [errorMessage, setErrorMessage] = useState("");
@@ -92,11 +93,16 @@ const Register = () => {
                 onChange={handleChange}
               />
             </Form.Group>
+
             <Form.Group controlId="formBasicPassword" className="mt-3">
-              <Form.Select aria-label="Default select example">
-                <option disabled>Select Role</option>
+              <Form.Select
+                aria-label="Default select example"
+                name="roleType"
+                value={formData.roleType}
+                onChange={handleChange}
+              >
                 <option value="ROLE_MANAGER">Manager</option>
-                <option value="ROLE_EMPLOYE">Employe</option>
+                <option value="ROLE_EMPLOYEE">Employee</option>
               </Form.Select>
             </Form.Group>
 
