@@ -120,7 +120,7 @@ function Home(props) {
                             <td>{item.fullName}</td>
                             <td>{item.userName}</td>
                             <td>
-                                <input disabled type="checkbox" defaultChecked={item.hasUser}/>
+                                <input type="checkbox" defaultChecked={item.hasUser}/>
                             </td>
                             <td>{item.arrivedDate}</td>
                             <td>
