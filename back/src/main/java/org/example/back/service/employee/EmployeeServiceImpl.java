@@ -1,9 +1,11 @@
 package org.example.back.service.employee;
 
 import org.example.back.dto.employee.EmployeeDto;
+import org.example.back.entity.department.Department;
 import org.example.back.entity.employee.Employee;
 import org.example.back.entity.user.User;
 import org.example.back.projection.EmployeePr;
+import org.example.back.repository.DepartmentRepo;
 import org.example.back.repository.EmployeeRepo;
 import org.example.back.repository.UserRepo;
 import org.springframework.http.HttpEntity;
@@ -18,10 +20,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepo employeeRepo;
     private final UserRepo userRepo;
+    private final DepartmentRepo departmentRepo;
 
-    public EmployeeServiceImpl(EmployeeRepo employeeRepo, UserRepo userRepo) {
+    public EmployeeServiceImpl(EmployeeRepo employeeRepo, UserRepo userRepo, DepartmentRepo departmentRepo) {
         this.employeeRepo = employeeRepo;
         this.userRepo = userRepo;
+        this.departmentRepo = departmentRepo;
     }
 
     @Override
@@ -32,7 +36,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public HttpEntity<?> getEmployeeByDepartmentId(Long id) {
-        return null;
+        Department department = departmentRepo.findById(id.intValue()).orElseThrow();
+        List<EmployeePr> allByUserDepartment = employeeRepo.findAllByUserDepartment(department);
+        return ResponseEntity.ok(allByUserDepartment);
     }
 
     @Override
