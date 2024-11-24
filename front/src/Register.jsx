@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Container, Form, Button, Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Register = () => {
@@ -13,6 +13,7 @@ const Register = () => {
   });
 
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,11 +29,12 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8080/auth/register",
+        "http://localhost:8080/api/auth/register",
         formData
       );
       console.log("User registered:", response.data);
       setErrorMessage("");
+      navigate("/login");
       alert("Registration successful!");
     } catch (error) {
       console.error(
