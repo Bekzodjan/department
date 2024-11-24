@@ -1,7 +1,13 @@
 package org.example.back.controller;
 
+import org.example.back.dto.employee.EmployeeDto;
+import org.example.back.entity.employee.Employee;
+import org.example.back.entity.user.User;
+import org.example.back.repository.EmployeeRepo;
+import org.example.back.repository.UserRepo;
 import org.example.back.service.employee.EmployeeServiceImpl;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -20,5 +26,9 @@ public class EmployeeController {
     @PutMapping("/{id}/gone")
     public HttpEntity<?> updateGoneDate(@PathVariable Long id) {
         return userServiceImpl.putGoneDate(id);
+    }
+    @PostMapping
+    public HttpEntity<?> addEmployee(@RequestBody EmployeeDto employee) {
+        return userServiceImpl.addEmployee(employee);
     }
 }
