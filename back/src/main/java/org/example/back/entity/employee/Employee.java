@@ -1,4 +1,4 @@
-package org.example.back.entity.timeTable;
+package org.example.back.entity.employee;
 
 
 import jakarta.persistence.*;
@@ -19,7 +19,7 @@ public class Employee {
     @Id
     @GeneratedValue
     private Long id;
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
     private Boolean hasUser;
     private LocalDateTime arrivedDate;

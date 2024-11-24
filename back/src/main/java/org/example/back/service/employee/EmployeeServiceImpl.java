@@ -1,10 +1,8 @@
 package org.example.back.service.employee;
 
-import org.example.back.entity.timeTable.Employee;
-import org.example.back.entity.user.User;
+import org.example.back.entity.employee.Employee;
 import org.example.back.projection.EmployeePr;
 import org.example.back.repository.EmployeeRepo;
-import org.example.back.repository.UserRepo;
 import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +22,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     public HttpEntity<?> getAllEmployee() {
         List<EmployeePr> all = employeeRepo.findAllBy();
         return new HttpEntity<>(all);
+    }
+
+    @Override
+    public HttpEntity<?> getEmployeeByDepartmentId(Long id) {
+        return null;
     }
 
     @Override

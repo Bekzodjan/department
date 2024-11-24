@@ -1,7 +1,7 @@
 package org.example.back.repository;
 
 import org.example.back.entity.department.Department;
-import org.example.back.entity.timeTable.Employee;
+import org.example.back.entity.employee.Employee;
 import org.example.back.projection.EmployeePr;
 import org.springframework.data.jpa.repository.JpaRepository;
 
