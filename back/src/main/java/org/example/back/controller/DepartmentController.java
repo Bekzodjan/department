@@ -16,7 +16,7 @@ public class DepartmentController {
         this.departmentServiceImpl = departmentServiceImpl;
     }
     @GetMapping
-    @PreAuthorize("hasAnyRole('ROLE_MANAGER')")
+//    @PreAuthorize("hasAnyRole('ROLE_MANAGER', 'ROLE_EMPLOYEE')")
     public HttpEntity<?> getDepartments() {
         return departmentServiceImpl.getDepartments();
     }

@@ -52,7 +52,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public HttpEntity<?> addEmployee(EmployeeDto employee) {
         User user = userRepo.findById(employee.userId()).orElseThrow();
-        Employee save = employeeRepo.save(Employee.builder().user(user).hasUser(employee.hasUser()).arrivedDate(LocalDateTime.now()).build());
+        Employee save = employeeRepo.save(Employee.builder().user(user).hasUser(employee.hasUser()).arrivedDate(employee.hasUser()?LocalDateTime.now():null).build());
         return ResponseEntity.ok(save);
     }
 }
