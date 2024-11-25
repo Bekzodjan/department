@@ -41,6 +41,10 @@ function Home(props) {
 
     function openModal() {
         setVisible(!visible)
+        reset({
+            userId:"",
+            hasUser:""
+        })
     }
 
     function saveEmployee(data) {
@@ -55,6 +59,9 @@ function Home(props) {
         }).then(()=> {
             getEmployeeByDepartmentId(selectBtn)
         })
+        reset()
+        openModal()
+
     }
 
     function getEmployeeByDepartmentId(id) {
@@ -66,8 +73,24 @@ function Home(props) {
                 "token":localStorage.getItem("authToken")
             }
         }).then(({data})=> {
+            console.log(data)
             setEmployees(data)
         })
+    }
+
+    function changeGoneDate(value,id) {
+        console.log(value)
+        if (!value){
+            axios({
+                url:`http://localhost:8080/api/employees/${id}/gone`,
+                method:"PUT",
+                headers:{
+                    "token":localStorage.getItem("authToken")
+                }
+            }).then(()=>{
+                getEmployeeByDepartmentId(selectBtn)
+            })
+        }
     }
 
     return (
@@ -85,6 +108,7 @@ function Home(props) {
                         <th>ID:</th>
                         <th>FullName:</th>
                         <th>UserName:</th>
+                        <th>HasUser:</th>
                         <th>ArrivedDate:</th>
                         <th>GoneDate:</th>
                     </tr>
@@ -95,9 +119,12 @@ function Home(props) {
                             <td>{item.id}</td>
                             <td>{item.fullName}</td>
                             <td>{item.userName}</td>
+                            <td>
+                                <input type="checkbox" defaultChecked={item.hasUser}/>
+                            </td>
                             <td>{item.arrivedDate}</td>
                             <td>
-                                <input type="checkbox"/>
+                                <input checked={item.goneDate!==null} type="checkbox" onChange={(e)=>changeGoneDate(item.goneDate!==null,item.id)}/><br/>
                                 {item.goneDate}
                             </td>
                         </tr>)
