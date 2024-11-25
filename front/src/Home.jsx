@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import axios from "axios";
 import Rodal from "rodal";
 import {useForm} from "react-hook-form";
